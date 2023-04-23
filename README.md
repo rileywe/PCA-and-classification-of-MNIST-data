@@ -76,32 +76,45 @@ Finally, the SVM and decision tree methods were tested against with the LDA meth
 
 ### Computational Results
 The s matrix from the SVD calculation is graphed and shown here:
-###################
+<br> <img src="https://github.com/rileywe/PCA-and-classification-of-MNIST-data/blob/main/EE399HW3Pics/SVDBig.png?raw=true" width="400"/>
+
 And here is a zoomed in version showing the elbow point: the point where the following singular values are not worth keeping.
-####################
+<br> <img src="https://github.com/rileywe/PCA-and-classification-of-MNIST-data/blob/main/EE399HW3Pics/SVDSmall.png?raw=true" width="400"/>
+
 The elbow point could be between rank 10 and rank 30 based on these images, but the reconstructed values will show how well some of these ranks perform:
 Original from dataset:
-##########
+<br> <img src="https://github.com/rileywe/PCA-and-classification-of-MNIST-data/blob/main/EE399HW3Pics/orig3.png?raw=true" width="400"/>
+
 Reconstructed with rank = 50:
+<br> <img src="https://github.com/rileywe/PCA-and-classification-of-MNIST-data/blob/main/EE399HW3Pics/k50.png?raw=true" width="400"/>
 
 Reconstructed with rank = 20:
+<br> <img src="https://github.com/rileywe/PCA-and-classification-of-MNIST-data/blob/main/EE399HW3Pics/k20.png?raw=true" width="400"/>
 
 Reconstructed with rank = 30:
+<br> <img src="https://github.com/rileywe/PCA-and-classification-of-MNIST-data/blob/main/EE399HW3Pics/k30.png?raw=true" width="400"/>
 
 I've decided rank 30 to be the best as a good, crisp reconstruction, but lower ranks would work if quicker or cheaper calculations are needed. 
 
 After projecting each image to 3 V-modes, the dataset was plotted and the results are shown below. Some images use the same axis but rearranged in order to provide a different perspective on the same distibution.
-###############################################################################################################
+<br> <img src="https://github.com/rileywe/PCA-and-classification-of-MNIST-data/blob/main/EE399HW3Pics/graph124.png?raw=true" width="400"/>
+<br> <img src="https://github.com/rileywe/PCA-and-classification-of-MNIST-data/blob/main/EE399HW3Pics/graph456.png?raw=true" width="400"/>
+<br> <img src="https://github.com/rileywe/PCA-and-classification-of-MNIST-data/blob/main/EE399HW3Pics/graph012.png?raw=true" width="400"/>
+<br> <img src="https://github.com/rileywe/PCA-and-classification-of-MNIST-data/blob/main/EE399HW3Pics/graph120.png?raw=true" width="400"/>
+<br> <img src="https://github.com/rileywe/PCA-and-classification-of-MNIST-data/blob/main/EE399HW3Pics/graph201.png?raw=true" width="400"/>
+
 Notice how data of one type is clearly clustered. Some clusters in the middle are presumably overlapping in some places, while others are on the outside and would be easier to separate.
 
 The LDA errors tested on each pair of digits ranged between 94.977% to 99.753% test accuracy and from 98.386% to 99.850% training accuracy. The most accurate pair was [6, 7], and the least was [5, 8]. Overall there is not much room here to overfit to the training data, but on some of the lower test accuracies the training accuracy was around 1% higher up to a maximum of 1.75%. The LDA model performed very well. 
 
 The [6, 7] combination graph is shown here:
-#############
+<br> <img src="https://github.com/rileywe/PCA-and-classification-of-MNIST-data/blob/main/EE399HW3Pics/graph67.png?raw=true" width="400"/>
+
 Notice the clear gap between the clusters, with only a little potential overlap on the left side.
 
 The [5, 8] combination graph is shown here:
-#############
+<br> <img src="https://github.com/rileywe/PCA-and-classification-of-MNIST-data/blob/main/EE399HW3Pics/graph58.png?raw=true" width="400"/>
+
 Notice how both clusters are very close to each other, and while still discerably 2 different clusters, have a lot more overlap than the [6, 7] pair did. 
 
 After calculating the LDA accuracies on the digits [4, 6, 7] all together, the training error is 98.2672%, and the test error is 97.8804%. These values are very close, but the model overtrained by a small amount. The difference falls within the range of train - test accuracy for the 2 digit combinations, so it's hard to tell how 3 digits affected the overtraining. 
